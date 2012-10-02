@@ -1,0 +1,23 @@
+=== Content character count live ===
+Plugin name: Content character count live
+Contributors: 2046
+Plugin URI: http://wordpress.org/extend/
+Donate Link: http://2046.cz/
+Tags: content, character, admin, live
+Requires at least: 3.4.1
+Tested up to: 3.4.2
+Stable tag: 0.1
+
+Counts charaters live while you write your content. Works for any kind of "post type" out of the box.
+
+Credits go to: <a href="http://konstruktors.com/blog/wordpress/3685-limit-number-words-characters-in-wordpress-editor/">Konstructor</a> and <a href="http://www.ilovecolors.com.ar/character-counter-excerpt-wordpress/">ilovecolors</a>.
+
+== Screenshots ==
+ 
+1. Screenshot
+
+== Change log ==
+
+= 0.1 =
+
+ * initial version
