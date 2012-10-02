@@ -1,7 +1,7 @@
 === Content character count live ===
 Plugin name: Content character count live
 Contributors: 2046
-Plugin URI: http://wordpress.org/extend/
+Plugin URI: http://wordpress.org/extend/plugins/count-content-characters/
 Donate Link: http://2046.cz/
 Tags: content, character, admin, live
 Requires at least: 3.4.1
