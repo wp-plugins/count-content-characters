@@ -1,23 +1,28 @@
 <?php
 /**
  * @package Content character count live
- * @version 0.1
+ * @version 0.1.1
  */
 /*
 Plugin Name: Content character count
 Plugin URI: http://wordpress.org/extend/
 Description: Counts charaters live while you write your content. Works for any kind of "post type" out of the box.
 Author: 2046
-Version: 0.1
+Version: 0.1.1
 Author URI: http://2046.cz
 */
+
+function CHAR_COUNT_INIT() {
+  load_plugin_textdomain( 'CHAR_COUNT', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
+}
+add_action('plugins_loaded', 'CHAR_COUNT_INIT');
 
 add_action( 'admin_print_footer_scripts', 'check_textarea_length' );
 
 function check_textarea_length() {
 	?>
 	<script type="text/javascript">
-		jQuery("#wp-word-count").after("<td><small>Characters num.: </small><input type=\"text\" value=\"0\" maxlength=\"3\" size=\"3\" id=\"ilc_excerpt_counter\" readonly=\"\"></td>");
+		jQuery("#wp-word-count").after("<td><small><?php _e ('Characters num.', 'CHAR_COUNT'); ?>: </small><input type=\"text\" value=\"0\" maxlength=\"3\" size=\"3\" id=\"ilc_excerpt_counter\" readonly=\"\"></td>");
 		//~ var editor_char_limit = 50;
 
 		// jQuery ready fires too early, use window.onload instead
