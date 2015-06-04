@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/count-content-characters/
 Donate Link: http://2046.cz/
 Tags: content, character, admin, live
 Requires at least: 3.4.1
-Tested up to: 3.7
+Tested up to: 4.2.2
 Stable tag: 0.1.3
 
 Counts charaters live while you write your content. Works for any kind of "post type" out of the box.
