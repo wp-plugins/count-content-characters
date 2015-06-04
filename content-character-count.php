@@ -23,12 +23,12 @@ function check_textarea_length() {
 	?>
 	<script type="text/javascript">
 		// inject the html
-		jQuery("#wp-word-count").after("<td><small><?php _e ('Characters num.', 'CHAR_COUNT'); ?>: </small><input type=\"text\" value=\"0\" maxlength=\"3\" size=\"3\" id=\"ilc_excerpt_counter\" readonly=\"\"></td>");
+		jQuery("#post-status-info").after("<div style='border: 1px solid #e5e5e5; border-top:0; display: block; background-color: #F7F7F7; padding: 0.3em 0.7em;'><?php _e ('Sum of characters:', 'CHAR_COUNT'); ?> <b id=\"ilc_excerpt_counter\"></b>, <?php _e ('Number of selected characters', 'CHAR_COUNT'); ?>: <b id=\"ilc_live_counter\">()</b></div>");
 		// count on load
 		window.onload = function () {
 			setTimeout(function() {
 				cont = tinymce.get('content').getContent().replace(/(<[a-zA-Z\/][^<>]*>|\[([^\]]+)\])|(\s+)/ig,'');
-				jQuery("#ilc_excerpt_counter").val(cont.length);
+				jQuery("#ilc_excerpt_counter").text(cont.length);
 			}, 300);
 		}
 	</script>
@@ -41,7 +41,21 @@ add_filter( 'tiny_mce_before_init', 'my_tinymce_setup_function' );
     $initArray['setup'] = 'function(ed) {
     ed.on("keyup", function(e) {
         editor_content = ed.getContent().replace(/(<[a-zA-Z\/][^<>]*>|\[([^\]]+)\])|(\s+)/ig,"");
-        jQuery("#ilc_excerpt_counter").val(editor_content.length);
+        jQuery("#ilc_excerpt_counter").text(editor_content.length);
+    });
+}';
+    return $initArray;
+}
+
+// add function to the tinymce on init
+add_filter( 'tiny_mce_before_init', 'live_selection_char_count' );
+  function live_selection_char_count( $initArray ) {
+    $initArray['setup'] = 'function(ed, index) {
+    ed.on("click", function(e) {
+    	// get the selection, and strip html
+		 var selection = ed.selection.getContent().replace(/(<[a-zA-Z\/][^<>]*>|\[([^\]]+)\])|(\s+)/ig,"");
+		// count the characters and write them in input field
+       jQuery("#ilc_live_counter").text( "("+selection.length+")");
     });
 }';
     return $initArray;
